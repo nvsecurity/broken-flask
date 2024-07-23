@@ -1,0 +1,21 @@
+skip-check:
+  # This would interfere with the internet accessibility and testing requirements of the demo
+  - CKV2_AWS_12 # Internet accessibility is necessary for this demo
+  - CKV2_AWS_28 # WAF would interfere with finding the root cause of the issue
+  - CKV_AWS_150 # Load balancer deletion protection would interfere with others quickly cleaning up their resources for this demo
+
+  # These items would be overkill for this demo
+  - CKV2_AWS_11 # VPC Flow logs are unnecessary here
+  - CKV_AWS_21  # S3 bucket versioning is overkill for this demo
+  - CKV_AWS_135 # Don't need EBS Optimized for this demo
+  - CKV_AWS_126 # Don't need detailed monitoring for this demo
+
+  # The only bucket in this demo is an ALB Access log bucket; these S3 rules aren't necessary.
+  - CKV_AWS_144 # "Ensure that S3 bucket has cross-region replication enabled" - the S3 bucket doesn't need creoss
+  - CKV_AWS_18 # "AWS Access logging not enabled on S3 buckets" - the S3 bucket is the one for ALB Access logs, not necessary.
+  - CKV2_AWS_62 # Event notifications are not necessary for this bucket
+  - CKV_AWS_145 # KMS Encryption for an access log bucket is unnecessary
+
+  # Deprecated options - these Checkov rules shouldn't exist anymore
+  - CKV2_AWS_61  # "An S3 bucket must have a lifecycle configuration" - the option this rule checks for is deprecated
+

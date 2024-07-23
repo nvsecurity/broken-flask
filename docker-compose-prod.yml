@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  broken-flask:
+    container_name: broken-flask
+    image: insecureapps/broken-flask
+    restart: always
+    ports:
+      - 4000:4000
+    networks:
+      - broken-net
+  employees:
+    container_name: broken-employees
+    image: insecureapps/broken-flask-employees
+    restart: always
+    ports:
+      - 4100:4100
+    networks:
+      - broken-net
+
+networks:
+  broken-net:
