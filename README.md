@@ -92,23 +92,19 @@ make snyk
 
 #### NightVision
 
-* If you have access to [NightVision](https://www.nightvision.net), you can run a DAST scan in a few minutes:
+* If you have access to [NightVision](https://app.nightvision.net), you can run a DAST scan in a few minutes:
 
 ```bash
-nightvision app create -n broken-flask
-nightvision app set -a broken-flask
-
 # Create the target
 nightvision target create \
   --name broken-flask-local \ 
-  --app broken-flask \
   --url http://localhost:4000 \
   --type api
 
 # Generate a Swagger doc from analyzing code
 nightvision swagger extract \
   --target broken-flask-local \
-  --output files/nv-generated-spec.yml \
+  --output openapi.yml \
   --lang python \
   ./flask_app
 
