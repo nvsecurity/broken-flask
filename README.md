@@ -55,39 +55,6 @@ docker-compose build
 docker-compose up -d
 ```
 
-### SAST and SCA scans
-
-* Run these commands to perform scans with SAST (code scanning tools).
-
-```bash
-# Run Semgrep (SAST)
-make semgrep
-# Run Bandit (SAST)
-make bandit
-```
-
-> [!NOTE]
-> **Why can't my code review tool (Semgrep, Bandit, CodeQL, etc.) find these vulnerabilities?**
-> 
-> Static Application Security Testing (SAST) tools work by scanning the codebase for known patterns that are indicative of security vulnerabilities. These tools are not able to identify vulnerabilities that are only exploitable in a live environment.
->
-> That's not to say that SAST tools are not useful - they are, and they can help find these unknown vulnerabilities, unlike the other classes of tools here. But they can't find everything, mainly:
-> * Vulnerabilities that are only exploitable in a live environment (there are a lot of these!)
-> * Run-time and environment related issues
-> * Nuanced access control issues
-> * Business logic issues
-> 
-> Additionally, some SAST tools have difficulty scanning code that lives across multiple files (Semgrep OSS), and others have a deficiency of rules (Bandit, other vendors that will threaten legal action if I offend them).
-
-### Dependency analysis scans
-
-* Run these commands to perform scans with Dependency Scanning tools:
-
-```bash
-# Run Snyk (Dependency analysis)
-make snyk
-```
-
 ### DAST Scans
 
 #### NightVision
@@ -126,6 +93,39 @@ make zap
 ```
 
 ZAP will not find the SQL Injection vulnerability in the application because it does not have access to the Swagger documentation. Other DAST tools on the market (besides NightVision) are in the same boat.
+
+### SAST and SCA scans
+
+* Run these commands to perform scans with SAST (code scanning tools).
+
+```bash
+# Run Semgrep (SAST)
+make semgrep
+# Run Bandit (SAST)
+make bandit
+```
+
+> [!NOTE]
+> **Why can't my code review tool (Semgrep, Bandit, CodeQL, etc.) find these vulnerabilities?**
+> 
+> Static Application Security Testing (SAST) tools work by scanning the codebase for known patterns that are indicative of security vulnerabilities. These tools are not able to identify vulnerabilities that are only exploitable in a live environment.
+>
+> That's not to say that SAST tools are not useful - they are, and they can help find these unknown vulnerabilities, unlike the other classes of tools here. But they can't find everything, mainly:
+> * Vulnerabilities that are only exploitable in a live environment (there are a lot of these!)
+> * Run-time and environment related issues
+> * Nuanced access control issues
+> * Business logic issues
+> 
+> Additionally, some SAST tools have difficulty scanning code that lives across multiple files (Semgrep OSS), and others have a deficiency of rules (Bandit, other vendors that will threaten legal action if I offend them).
+
+### Dependency analysis scans
+
+* Run these commands to perform scans with Dependency Scanning tools:
+
+```bash
+# Run Snyk (Dependency analysis)
+make snyk
+```
 
 ## AWS Setup
 
