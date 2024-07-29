@@ -188,9 +188,17 @@ We are a small startup and can't afford these tools, but I've had some friends r
 
 ## I'm skeptical. Is this a niche case?
 
-No. These are standard vulnerability classes that are exploited in the wild - SQL Injection, Server Side Request Forgery, and Remote Code Execution. 
+**Vulnerability type**: In terms of the vulnerability class - No, it's commmon. SQL Injection is a standard vulnerability class that is exploited in the wild. [Injection attacks are #3 on the OWASP Top 10](https://owasp.org/Top10/A03_2021-Injection/), inclusive of SQL Injection.
 
-This is an insanely simple application. Just take a look at [src/app.py](flask_app/app.py) - it's 50 lines of application code, plus infrastructure code in the [terraform](terraform) directory.
+**Vulnerability scanning**: In terms of the technique used to discover the vulnerability - Vulnerability Scanning (MITRE attack # [T1595.002](https://attack.mitre.org/techniques/T1595/002/)) is one of the top ways that hackers can get a foothold within your organization. The other top ways are social engineering, phishing, and credential compromise. 
+
+**Application complexity**: This is an insanely simple application. Just take a look at [src/app.py](flask_app/app.py) - it's 50 lines of application code, plus infrastructure code in the [terraform](terraform) directory.
+
+## How often do API attacks really happen in the wild?
+
+According to [TechTarget's Enterprise Strategy Group](https://www.datocms-assets.com/106067/1697829872-esg-ebook-data-theorem-api-security-ebook-april-2023.pdf), 92% of organizations have experienced an API-related security incident in the last year. 
+
+In the TechTarget ESG study, they discovered that "more than three-quarters (76%) of organizations report that they have an average of 26 APIs per application deployed."
 
 ## How do I install these tools?
 
@@ -217,8 +225,4 @@ brew tap snyk/tap
 brew install snyk
 ```
 
-# References
 
-Mitre attack:
-* Active Scanning (T1595)
-* Vulnerability Scanning (T1595.002): https://attack.mitre.org/techniques/T1595/002/
