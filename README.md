@@ -63,20 +63,14 @@ docker-compose up -d
 
 ```bash
 # Create the target
-nightvision target create \
-  --name broken-flask-local \ 
-  --url http://localhost:4000 \
-  --type api
+nightvision target create broken-flask-api http://localhost:4000 --type API
+
 
 # Generate a Swagger doc from analyzing code
-nightvision swagger extract \
-  --target broken-flask-local \
-  --output openapi.yml \
-  --lang python \
-  ./flask_app
+nightvision swagger extract . --target broken-flask-api --output openapi.yml --lang python
 
 # Run the scan
-nightvision scan --target broken-flask-local
+nightvision scan broken-flask-api
 ```
 
 NightVision **will** discover SQL Injection in the application.
